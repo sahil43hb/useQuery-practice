@@ -3,12 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ThemeProvider } from '@mui/material';
+import {theme} from './views/theme';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const queryClient= new QueryClient();
 root.render(
-  <React.StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <ThemeProvider theme={theme}>
     <App />
-  </React.StrictMode>
+    </ThemeProvider>
+  </QueryClientProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
